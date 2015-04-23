@@ -1,0 +1,45 @@
+/*
+ * HeuristicInformation.java
+ * Created 14 January 2012
+ */
+
+package engine;
+
+/**
+ * The heuristic information used by a Heuristic Ant.
+ * Implemented as a Singleton pattern, as there is only
+ * one set of heuristic information per design problem. 
+ * 
+ * @author Christopher Simons
+ */
+
+public class HeuristicInformation 
+{
+    public static int idealNumberOfElementsPerClass;
+    public static int remainderElements;
+
+    /**
+     * set up the heuristic information.
+     * assuming no 'frozen' classes (TODO later)
+     * 
+     * @param numberOfAttributes
+     * @param numberOfMethods
+     * @param numberOfClasses 
+     */
+    public static void setUp( 
+        int numberOfAttributes, int numberOfMethods, int numberOfClasses )
+    {
+        assert numberOfAttributes > 0; 
+        assert numberOfMethods > 0;
+        assert numberOfClasses > 0;
+        
+        final int total = numberOfAttributes + numberOfMethods;
+        
+        // yes! I know this is integer division; but we want an integer
+        idealNumberOfElementsPerClass = total / numberOfClasses;
+        remainderElements = total % numberOfClasses;
+    }
+
+}   // end class
+
+//------- end of file -------------------------------------
